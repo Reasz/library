@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('book_authors', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('book_author_id');
             $table->unsignedBigInteger('book_id');
             $table->unsignedBigInteger('author_id');
             $table->timestamp('edited_at');
