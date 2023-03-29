@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamp('edited_at');
             $table->integer('number_of_copies');
             $table->timestamps();
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');  
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');  
             $table->foreign('book_id')->references('book_id')->on('books')->onDelete('cascade');          
         });
     }
