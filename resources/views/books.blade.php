@@ -14,7 +14,9 @@
                                 @foreach ($books as $book)
                                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                         <div class="d-flex flex-column">
-                                            <h6 class="mb-3 text-sm">Title: {{ $book->title }}</h6>
+                                            <h6 class="mb-3 text-sm">
+                                                <a href="/books/{{ $book->book_id }}"> Title: {{ $book->title }} </a>
+                                            </h6>
                                             <span class="mb-2 text-xs">Author:  </span>
                                         </div>
                                     </li>
@@ -24,6 +26,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         @include('layouts.footers.auth.footer')
     </div>
 @endsection
