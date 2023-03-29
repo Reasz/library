@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('edition');
             $table->string('placement');
             $table->timestamp('edited_at');
-            $table->integer('isbn');
+            $table->bigInteger('isbn');
             $table->integer('number_of_copies');
             $table->integer('rented_copies');
             $table->timestamps();
