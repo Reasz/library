@@ -13,4 +13,11 @@ class BookController extends Controller
             'books' => Book::latest()->get()
         ]);
     }
+
+    public function book(Book $book)
+    {
+        return view('book', [
+            'book' => $book
+        ]);
+    }
 }
