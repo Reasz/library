@@ -32,6 +32,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </div>
     <div class="container-fluid py-4">
         @include('layouts.footers.auth.footer')
