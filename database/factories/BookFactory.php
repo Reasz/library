@@ -18,7 +18,7 @@ class BookFactory extends Factory
     {
         return [
             'title' => fake()->word(),
-            'summary' => fake()->text(),
+            'summary' => fake()->paragraph(30),
             'edition' => fake()->year(),
             'placement' => fake()->sentence(),
             'edited_at' => now(),

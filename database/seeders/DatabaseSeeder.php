@@ -51,6 +51,8 @@ class DatabaseSeeder extends Seeder
         Genre::factory()->create(['name' => 'historical']);
         Genre::factory()->create(['name' => 'romance']);
 
+        Genre::factory(50)->create();
+
         //$book1->genres()->attach($scifi->id);
 
         $genres = Genre::all();
