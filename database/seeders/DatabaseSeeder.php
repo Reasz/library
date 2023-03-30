@@ -46,13 +46,17 @@ class DatabaseSeeder extends Seeder
         $scifi = Genre::factory()->create(['name' => 'sci-fi']);
         $reallife = Genre::factory()->create(['name' => 'real life']);
         $fantasy = Genre::factory()->create(['name' => 'fantasy']);
+        Genre::factory()->create(['name' => 'thriller']);
+        Genre::factory()->create(['name' => 'horror']);
+        Genre::factory()->create(['name' => 'historical']);
+        Genre::factory()->create(['name' => 'romance']);
 
         //$book1->genres()->attach($scifi->id);
 
         $genres = Genre::all();
         Book::all()->each(function ($book) use ($genres) { 
             $book->genres()->attach(
-                $genres->random(rand(1, 2))->pluck('id')->toArray()
+                $genres->random(rand(1, 3))->pluck('id')->toArray()
             );
         });
     }
