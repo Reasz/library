@@ -52,7 +52,8 @@ Route::get('/books-{book:id}', [BookController::class, 'book'])->name('book');
 
 Route::get('genres-{genre:id}', function (Genre $genre) {
 	return view('books', [
-		'books' => $genre->books
+		'books' => $genre->books,
+		'genres' => Genre::all()
 	]);
 
 });
