@@ -8,11 +8,21 @@
                     <div class="card">
                         <div class="card-header pb-0 px-3">
                             <h6 class="mb-0">Results</h6>
-                            
-
+                            <!-- GENRES DROPDOWN -->
+                            <div class="dropdown">
+                                <button class="btn bg-gradient-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Genres
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton"  style="max-height:10rem; overflow:auto;">
+                                    <li><a class="dropdown-item" href="/books">all</a></li>
+                                    @foreach($genres as $genre)
+                                        <li><a class="dropdown-item" href="/genres-{{$genre->id}}">{{ $genre->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
                         <div class="container">
-                            <div class="row">
+                            <div class="row bg-gray-100">
                                 @foreach ($books as $book)
                                     <div class="card" style="width: 25rem; margin: 1rem;">
 
