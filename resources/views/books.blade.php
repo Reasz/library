@@ -8,26 +8,37 @@
                     <div class="card">
                         <div class="card-header pb-0 px-3">
                             <h6 class="mb-0">Results</h6>
+                            
+
                         </div>
                         <div class="container">
                             <div class="row">
                                 @foreach ($books as $book)
-                                    <div class="card" style="width: 18rem; margin: 1rem;">
-                                        <h5>
-                                            <a href="/{{ $book->id }}">{{ $book->title }} </a>
-                                        </h5>
+                                    <div class="card" style="width: 25rem; margin: 1rem;">
+
+                                        <span class="badge bg-gradient-warning">
+                                            <a href="/books-{{ $book->id }}">{{ $book->title }} </a>
+                                        </span>
+
                                         <div class="text-muted small">
                                             @foreach ($book->authors as $author)
                                                 {{ $author->name }},
                                             @endforeach
                                         </div>
                                         
-                                        @foreach ($book->genres as $genre)
-                                            <a href="#" class="badge badge-default" style="color:#000;">
-                                                {{ $genre->name }}
-                                            </a>
-                                        @endforeach
-                                        
+                                        <div class="container">
+                                            <div class="row">
+                                                @foreach ($book->genres as $genre)
+                                                    <div class="col-sm">
+                                                        <a href="/genres-{{ $genre->id }}">    
+                                                            <span class="badge bg-gradient-secondary">
+                                                                {{ $genre->name }}
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
                                     </div>
                                 @endforeach
                             </div>
