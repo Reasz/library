@@ -1,32 +1,63 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Books'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Book'])
     <div class="container-fluid py-4">
-        <div class="row">
-                <div class="col-md-7 mt-4">
-                    <div class="card">
-                        <div class="card-header pb-0 px-3">
-                            <h6 class="mb-0">Results</h6>
-                        </div>
-                        <div class="card-body pt-4 p-3">
-                            <ul class="list-group">
-                                
-                                    <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-3 text-sm">
-                                                <a href="/books/{{ $book->book_id }}"> Title: {{ $book->title }} </a>
-                                            </h6>
-                                            <span class="mb-2 text-xs">Author:  </span>
-                                        </div>
-                                    </li>
-                                
-                            </ul>
-                        </div>
-                    </div>
+    <div class="card shadow-lg mx-4 card-profile-bottom">
+        <div class="card-body p-3">
+            <div class="row gx-4">
+                <div>   
+                    {{ $book->title }}
                 </div>
+
+                <div>   
+                    <b>Authors:</b> 
+                    @foreach($book->authors as $author)
+                        {{ $author->name }}
+                    @endforeach
+                </div>
+
+                <div>   
+                    <b>Genres:</b> 
+                    @foreach($book->genres as $genre)
+                        {{ $genre->name }}
+                    @endforeach
+                </div>
+
+                <div>   
+                    <b>edition:</b> {{ $book->edition }}
+                </div>
+
+                <div>   
+                    {{ $book->summary }}
+                </div>
+
+                <div>   
+                    <b>placement:</b>  {{ $book->placement }}
+                </div>
+
+                <div>   
+                    <b>isbn:</b>  {{ $book->isbn }}
+                </div>
+
+                <div>   
+                    <b>number of copies:</b>  {{ $book->number_of_copies }}
+                </div>
+
+                <div>   
+                    <b>rented copies:</b>  {{ $book->rented_copies }}
+                </div>
+               
+
             </div>
         </div>
+    </div>
+
+    <div>
+       
+                    Comments
+
+    </div>
         @include('layouts.footers.auth.footer')
     </div>
 @endsection
