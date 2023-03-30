@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Book;
+use App\Models\Genre;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,15 +48,15 @@ Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('
 Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
 Route::get('/books', [BookController::class, 'books'])->name('books');
-Route::get('/{book:id}', [BookController::class, 'book'])->name('book');
-/*
-Route::get('{book:book_id}', function (Book $book) {
-	return view('book', [
-		'book' => $book
+Route::get('/books-{book:id}', [BookController::class, 'book'])->name('book');
+
+Route::get('genres-{genre:id}', function (Genre $genre) {
+	return view('books', [
+		'books' => $genre->books
 	]);
 
 });
-*/
+
 
 
 Route::group(['middleware' => 'auth'], function () {
