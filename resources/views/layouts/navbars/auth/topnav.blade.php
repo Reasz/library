@@ -17,6 +17,16 @@
                     <input type="text" class="form-control" placeholder="Type here...">
                 </div>
             </div>
+
+
+
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                <form method="GET" action="#">
+                    <input type="text" name="search" placeholder="search..." 
+                    class="form-control" value="{{ request('search') }}">
+                </form>
+            </div>
+
             <ul class="navbar-nav  justify-content-end">
                 <li class="nav-item d-flex align-items-center">
                     <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">
