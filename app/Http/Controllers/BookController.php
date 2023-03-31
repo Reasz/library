@@ -14,18 +14,16 @@ class BookController extends Controller
     {
         //$books = Book::latest()->get();
         
-        return view('books', [
+        return view('books.books', [
             //'books' => Book::latest()->get(),
             //'books' => $this->getBooks(),
-            'books' => Book::latest()->filter(request(['search', 'genres']))->get(),
-            'genres' => Genre::all(),
-            'currentGenre' => Genre::firstWhere('id', request('genres'))
+            'books' => Book::latest()->filter(request(['search', 'genres']))->get()
         ]);
     }
 
     public function book(Book $book)
     {
-        return view('book', [
+        return view('books.book', [
             'book' => $book
         ]);
     }
