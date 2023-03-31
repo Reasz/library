@@ -10,11 +10,12 @@ class Book extends Model
     use HasFactory;
 
     public function scopeFilter($query, array $filters) { // Book::newQuery()->filter()
-        $query->when($filters['search'] ?? false, function ($query, $search) {
-            $query
-                ->where('title', 'like', '%' . $search . '%')
-                ->orWhere('summary', 'like', '%' . $search . '%');
-        });
+        $query->when($filters['search'] ?? false, fn ($query, $search) =>
+            $query->where(fn($query) =>
+                $query->where('title', 'like', '%' . $search . '%')
+                    ->orWhere('summary', 'like', '%' . $search . '%')
+            )
+        );
 
         $query->when($filters['genres'] ?? false, fn ($query, $genres) =>
             $query->whereHas('genres', fn ($query) => 
