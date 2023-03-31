@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         $bookAuthorIds = [$author1->id, $author2->id];
         $book1->authors()->attach($bookAuthorIds);
 */
-        Book::factory(15)->create();
+        Book::factory(100)->create();
         Author::factory(5)->create();
 
         $authors = Author::all();
@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
         Genre::factory()->create(['name' => 'historical']);
         Genre::factory()->create(['name' => 'romance']);
 
-        Genre::factory(50)->create();
+        //Genre::factory(5)->create();
 
         //$book1->genres()->attach($scifi->id);
 

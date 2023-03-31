@@ -15,6 +15,8 @@
                         <div class="container">
                             @if ($books->count())
                                 <x-books-grid :books="$books" />
+
+                                {{ $books->links() }}
                             @else
                                 <p>No books found.</p>
                             @endif

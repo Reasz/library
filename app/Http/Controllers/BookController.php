@@ -17,7 +17,9 @@ class BookController extends Controller
         return view('books.books', [
             //'books' => Book::latest()->get(),
             //'books' => $this->getBooks(),
-            'books' => Book::latest()->filter(request(['search', 'genres', 'authors']))->get()
+            'books' => Book::latest()->filter(
+                request(['search', 'genres', 'authors'])
+            )->paginate(18)->withQueryString()
         ]);
     }
 
