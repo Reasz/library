@@ -22,6 +22,12 @@ class Book extends Model
             )
         );
 
+        $query->when($filters['authors'] ?? false, fn ($query, $authors) =>
+            $query->whereHas('authors', fn ($query) => 
+                $query->where('author_id', $authors)
+            )
+        );
+
         /*
         if($filters['search'] ?? false) {
             $query

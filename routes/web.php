@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Author;
 use App\Models\Book;
 use App\Models\Genre;
 use Illuminate\Support\Facades\Route;
@@ -49,17 +50,6 @@ Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middle
 
 Route::get('/books', [BookController::class, 'books'])->name('books');
 Route::get('/books-{book:id}', [BookController::class, 'book'])->name('book');
-/*
-Route::get('genres-{genre:id}', function (Genre $genre) {
-	return view('books', [
-		'books' => $genre->books,
-		'currentGenre' => $genre,
-		'genres' => Genre::all()
-	]);
-
-});
-
-*/
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');

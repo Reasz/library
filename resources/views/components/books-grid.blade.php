@@ -10,7 +10,7 @@
 
             <div class="text-muted small">
                 @foreach ($book->authors as $author)
-                    {{ $author->name }},
+                    <a href="?authors={{ $author->id }}">{{ $author->name }}</a>,
                 @endforeach
             </div>
             
