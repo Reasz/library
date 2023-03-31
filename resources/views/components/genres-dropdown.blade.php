@@ -5,7 +5,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton"  style="max-height:10rem; overflow:auto;">
                                     <li><a class="dropdown-item" href="/books">all</a></li>
                                     @foreach($genres as $genre)
-                                        <li><a class="dropdown-item" href="?genres={{$genre->id}}">{{ $genre->name }}</a></li>
+                                        <li><a class="dropdown-item" href="?genres={{$genre->id}}&{{ http_build_query(request()->except('genres')) }}">{{ $genre->name }}</a></li>
                                     @endforeach
                                 </ul>
 </div>
