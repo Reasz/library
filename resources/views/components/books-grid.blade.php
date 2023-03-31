@@ -10,7 +10,7 @@
 
             <div class="text-muted small">
                 @foreach ($book->authors as $author)
-                    <a href="?authors={{ $author->id }}">{{ $author->name }}</a>,
+                    <a href="?authors={{$author->id}}&{{ http_build_query(request()->except('authors', 'page')) }}">{{ $author->name }}</a>,
                 @endforeach
             </div>
             
@@ -18,7 +18,7 @@
                 <div class="row">
                     @foreach ($book->genres as $genre)
                         <div class="col-sm">
-                            <a href="?genres={{$genre->id}}">    
+                            <a href="?genres={{$genre->id}}&{{ http_build_query(request()->except('genres', 'page')) }}">    
                                 <span class="badge bg-gradient-secondary">
                                     {{ $genre->name }}
                                 </span>

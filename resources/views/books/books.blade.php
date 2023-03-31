@@ -10,6 +10,7 @@
                             <h6 class="mb-0">Results</h6>
                             
                             <x-genres-dropdown />
+                            <x-books-search />
                         </div>
                         
                         <div class="container">
