@@ -15,6 +15,13 @@ class Book extends Model
                 ->where('title', 'like', '%' . $search . '%')
                 ->orWhere('summary', 'like', '%' . $search . '%');
         });
+
+        $query->when($filters['genres'] ?? false, fn ($query, $genres) =>
+            $query->whereHas('genres', fn ($query) => 
+                $query->where('genre_id', $genres)
+            )
+        );
+
         /*
         if($filters['search'] ?? false) {
             $query

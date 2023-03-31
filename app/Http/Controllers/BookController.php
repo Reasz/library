@@ -17,8 +17,9 @@ class BookController extends Controller
         return view('books', [
             //'books' => Book::latest()->get(),
             //'books' => $this->getBooks(),
-            'books' => Book::latest()->filter(request(['search']))->get(),
-            'genres' => Genre::all()
+            'books' => Book::latest()->filter(request(['search', 'genres']))->get(),
+            'genres' => Genre::all(),
+            'currentGenre' => Genre::firstWhere('id', request('genres'))
         ]);
     }
 
