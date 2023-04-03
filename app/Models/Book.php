@@ -9,6 +9,8 @@ class Book extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function scopeFilter($query, array $filters) { // Book::newQuery()->filter()
         $query->when($filters['search'] ?? false, fn ($query, $search) =>
             $query->where(fn($query) =>
@@ -44,5 +46,9 @@ class Book extends Model
 
     public function genres() {
         return $this->belongsToMany(Genre::class, 'book_genres');
+    }
+
+    public function comments() {
+        return $this->hasMany(Comment::class, 'book_id');
     }
 }
