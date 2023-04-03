@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\BookAuthors;
+use App\Models\Comment;
 use App\Models\Genre;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -33,7 +34,10 @@ class DatabaseSeeder extends Seeder
         $bookAuthorIds = [$author1->id, $author2->id];
         $book1->authors()->attach($bookAuthorIds);
 */
-        Book::factory(100)->create();
+        Book::factory(10)->create();
+
+        Comment::factory(50)->create();
+        
         Author::factory(5)->create();
 
         $authors = Author::all();
@@ -61,5 +65,7 @@ class DatabaseSeeder extends Seeder
                 $genres->random(rand(1, 3))->pluck('id')->toArray()
             );
         });
+
+        
     }
 }
