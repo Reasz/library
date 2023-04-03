@@ -10,7 +10,7 @@
                             <h6 class="">{{ $comment->user->username }}</h6>
                             <p class="text-xs">
                                 posted
-                                <time> {{ $comment->created_at }} </time>
+                                <time> {{ $comment->created_at->format('F j, Y, g:i a') }} </time>
                             </p>
                         </header>
 
