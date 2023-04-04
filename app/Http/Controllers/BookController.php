@@ -7,6 +7,8 @@ use App\Models\Book;
 use App\Models\BookAuthors;
 use App\Models\Genre;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Symfony\Component\HttpFoundation\Response;
 
 class BookController extends Controller
 {
@@ -29,6 +31,36 @@ class BookController extends Controller
             'book' => $book
         ]);
     }
+
+    public function create(){
+        return view('books.create');
+    }
+
+    public function store(){
+        $attributes = request()->validate([
+            'title' => 'required|string',
+            'summary' => 'required|string',
+            'edition' => 'required|integer',
+            'placement' => 'required|string',
+            'isbn' => 'required|integer',
+            'number_of_copies' => 'required|integer',
+            //'genres' => 'required',
+            //'genres.*' => 'required'//['required', Rule::exists('genres', 'id')],
+            //'author' => 'required'
+        ]);
+
+        $attributes['rented_copies'] = 0;
+
+        $book = Book::create($attributes);
+        $book->genres()->attach(request()->input('genres'));
+
+        return redirect('/books');
+    }
+
+    // index --show all resoruce, show --sow one resource, create, store, edit, update, destroy
+
+    
+
 /*
     public function getBooks() {
         //return Book::latest()->filter()->get();
