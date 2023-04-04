@@ -16,8 +16,8 @@ return new class extends Migration
             //$table->unsignedBigInteger('book_id');
             //$table->unsignedBigInteger('user_id');
             $table->id();
-            $table->foreignId('book_id');
-            $table->foreignId('user_id');
+            $table->foreignId('book_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->text('comment');
             $table->timestamp('edited_at');
             $table->timestamps();
