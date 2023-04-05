@@ -21,10 +21,27 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
+            'username' => 'superadmin',
+            'email' => 'superadmin@argon.com',
+            'password' => bcrypt('secret'),
+            'edited_at' => now(),
+            'type' => '1'
+        ]);
+
+        DB::table('users')->insert([
             'username' => 'admin',
             'email' => 'admin@argon.com',
             'password' => bcrypt('secret'),
-            'edited_at' => now()
+            'edited_at' => now(),
+            'type' => '2'
+        ]);
+
+        DB::table('users')->insert([
+            'username' => 'user',
+            'email' => 'user@argon.com',
+            'password' => bcrypt('secret'),
+            'edited_at' => now(),
+            'type' => '3'
         ]);
 /*
         $author1 = Author::factory()->create();
