@@ -2,77 +2,59 @@
 
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'Books'])
-    <div class="container-fluid py-4">
-        <div class="row">
-                <div class="col-md-16 mt-4">
-                    <div class="card">
-                        <div class="card-header pb-0 px-3">
-                        </div>
-                        
-                        <div class="container">
+    <x-card>         
+        <div class="container">
                            
-                            <div>   
-                                {{ $book->title }}
-                            </div>
-            
-                            <div>   
-                                <b>Authors:</b> 
-                                @foreach($book->authors as $author)
-                                    {{ $author->name }}
-                                @endforeach
-                            </div>
-            
-                            <div>   
-                                <b>Genres:</b> 
-                                @foreach($book->genres as $genre)
-                                    {{ $genre->name }}
-                                @endforeach
-                            </div>
-            
-                            <div>   
-                                <b>edition:</b> {{ $book->edition }}
-                            </div>
-            
-                            <div>   
-                                {{ $book->summary }}
-                            </div>
-            
-                            <div>   
-                                <b>placement:</b>  {{ $book->placement }}
-                            </div>
-            
-                            <div>   
-                                <b>isbn:</b>  {{ $book->isbn }}
-                            </div>
-            
-                            <div>   
-                                <b>number of copies:</b>  {{ $book->number_of_copies }}
-                            </div>
-            
-                            <div>   
-                                <b>rented copies:</b>  {{ $book->rented_copies }}
-                            </div>
-                            
-                        </div>
-
-                        <div class="card-footer pb-0 px-3">
-                            
-                        </div>
-
-                    </div>
-                </div>
+            <div>   
+                {{ $book->title }}
             </div>
-        </div>
-    </div>
 
+            <div>   
+                <b>Authors:</b> 
+                @foreach($book->authors as $author)
+                    {{ $author->name }}
+                @endforeach
+            </div>
+
+            <div>   
+                <b>Genres:</b> 
+                @foreach($book->genres as $genre)
+                    {{ $genre->name }}
+                @endforeach
+            </div>
+
+            <div>   
+                <b>edition:</b> {{ $book->edition }}
+            </div>
+
+            <div>   
+                {{ $book->summary }}
+            </div>
+
+            <div>   
+                <b>placement:</b>  {{ $book->placement }}
+            </div>
+
+            <div>   
+                <b>isbn:</b>  {{ $book->isbn }}
+            </div>
+
+            <div>   
+                <b>number of copies:</b>  {{ $book->number_of_copies }}
+            </div>
+
+            <div>   
+                <b>rented copies:</b>  {{ $book->rented_copies }}
+            </div>
+         
+        </div>
+        
+    </x-card>
 
     @include ('books._add-comment-form')
-    
-    
+        
     @foreach ($book->comments as $comment)
         <x-book-comment :comment="$comment" />
     @endforeach
-    
-    
-    
+
 @endsection
