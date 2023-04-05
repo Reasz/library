@@ -54,7 +54,7 @@ Route::get('/books', [BookController::class, 'books'])->name('books');
 Route::get('/books-{book:id}', [BookController::class, 'book'])->name('book');
 Route::post('/books-{book:id}-comments', [BookCommentsController::class, 'store']);
 
-Route::get('admin-book-create', [BookController::class, 'create'])->middleware('admin');
+Route::get('admin-book-create', [BookController::class, 'create'])->middleware('admin')->name('create-book');
 Route::post('admin-books', [BookController::class, 'store'])->middleware('admin');
 
 Route::group(['middleware' => 'auth'], function () {
