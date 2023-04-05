@@ -36,6 +36,8 @@ use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\BookCommentsController;
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\AdminBookController;
+
 
 Route::get('/', function () {
 	return redirect('/dashboard'); })->middleware('auth');
@@ -54,8 +56,12 @@ Route::get('/books', [BookController::class, 'books'])->name('books');
 Route::get('/books-{book:id}', [BookController::class, 'book'])->name('book');
 Route::post('/books-{book:id}-comments', [BookCommentsController::class, 'store']);
 
-Route::get('admin-book-create', [BookController::class, 'create'])->middleware('admin')->name('create-book');
-Route::post('admin-books', [BookController::class, 'store'])->middleware('admin');
+Route::get('admin-books', [AdminBookController::class, 'index'])->middleware('admin')->name('admin-books');
+Route::post('admin-books', [AdminBookController::class, 'store'])->middleware('admin');
+Route::get('admin-book-create', [AdminBookController::class, 'create'])->middleware('admin')->name('admin-book-create');
+Route::get('/admin-book-{book:id}-edit', [AdminBookController::class, 'edit'])->middleware('admin')->name('admin-book-edit');
+Route::patch('/admin-book-{book:id}', [AdminBookController::class, 'update'])->middleware('admin')->name('admin-book-edit');
+Route::delete('/admin-book-{book:id}', [AdminBookController::class, 'destroy'])->middleware('admin')->name('admin-book-delete');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
