@@ -32,38 +32,40 @@
             </li>
 
 
+            @admin
 
+                <li>
+                    <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
+                        <i class="fab fa-laravel" ></i>
+                        <span class="nav-link-text" >{{ __('Admin section') }}</span>
+                        <b class="caret mt-1"></b>
+                    </a>
 
-            <li>
-                <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
-                    <i class="fab fa-laravel" ></i>
-                    <span class="nav-link-text" >{{ __('Admin section') }}</span>
-                    <b class="caret mt-1"></b>
-                </a>
+                    <div class="collapse show" id="laravel-examples">
+                        <ul class="nav pl-4">
+                            <li class="nav-item">
+                                <a class="nav-link {{ str_contains(request()->url(), 'admin-book-create') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'admin-book-create']) }}">
+                                    <div
+                                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="ni ni-books text-warning text-sm opacity-10"></i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">New book</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ str_contains(request()->url(), 'admin-books') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'admin-books']) }}">
+                                    <div
+                                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="ni ni-books text-warning text-sm opacity-10"></i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">All books</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
-                <div class="collapse show" id="laravel-examples">
-                    <ul class="nav pl-4">
-                        <li class="nav-item">
-                            <a class="nav-link {{ str_contains(request()->url(), 'admin-book-create') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'admin-book-create']) }}">
-                                <div
-                                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i class="ni ni-books text-warning text-sm opacity-10"></i>
-                                </div>
-                                <span class="nav-link-text ms-1">New book</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ str_contains(request()->url(), 'admin-books') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'admin-books']) }}">
-                                <div
-                                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i class="ni ni-books text-warning text-sm opacity-10"></i>
-                                </div>
-                                <span class="nav-link-text ms-1">All books</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+            @endadmin
 
 
         </ul>

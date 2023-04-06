@@ -28,21 +28,23 @@
                                 @endforeach
                             </p>
                             </td>
-                            <td class="align-middle">
-                                <a href="admin-book-{{ $book->id }}-edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit book">
-                                    Edit
-                                </a>
-                            </td>
-                            <td class="align-middle">
-                                <form method="POST" action="/admin-book-{{ $book->id }}">
-                                    @csrf
-                                    @method('DELETE')
+                                @superadmin
+                                <td class="align-middle">
+                                    <a href="admin-book-{{ $book->id }}-edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit book">
+                                        Edit
+                                    </a>
+                                </td>
+                                <td class="align-middle">
+                                    <form method="POST" action="/admin-book-{{ $book->id }}">
+                                        @csrf
+                                        @method('DELETE')
 
-                                    <button class="btn text-xs">
-                                        Delete
-                                    </button>
-                                </form>
-                            </td>
+                                        <button class="btn text-xs">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            @endsuperadmin
                         </tr>
                     @endforeach
           
