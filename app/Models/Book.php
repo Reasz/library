@@ -51,4 +51,16 @@ class Book extends Model
     public function comments() {
         return $this->hasMany(Comment::class, 'book_id');
     }
+
+    public function favorites() {
+        return $this->belongsToMany(User::class, 'user_id');
+    }
+
+    public function checkFavorites()
+    {
+        if(Favorite::where(['book_id' => $this->id, 'user_id' => auth()->user()->id])->exists()){
+            return true;
+        }
+        return false;
+    }
 }

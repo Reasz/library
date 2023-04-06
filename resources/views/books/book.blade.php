@@ -9,6 +9,19 @@
                 {{ $book->title }}
             </div>
 
+            @if($book->checkFavorites())
+                <p>in favorites</p>
+            @else
+                <form method="POST" action="favorites">
+                    @csrf
+                    <div class="row p-4">
+                        <input type="text" id="user_id" name="user_id" value="{{ auth()->user()->id }}" hidden >
+                        <input type="text" id="book_id" name="book_id" value="{{ $book->id }}" hidden >
+                        <x-form.submit-button> Add to favorites </x-form.submit-button>
+                    </div>
+                </form>
+            @endif
+
             <div>   
                 <b>Authors:</b> 
                 @foreach($book->authors as $author)

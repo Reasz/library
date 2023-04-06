@@ -6,7 +6,9 @@ use App\Models\Author;
 use App\Models\Book;
 use App\Models\BookAuthors;
 use App\Models\Comment;
+use App\Models\Favorite;
 use App\Models\Genre;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -51,9 +53,9 @@ class DatabaseSeeder extends Seeder
         $bookAuthorIds = [$author1->id, $author2->id];
         $book1->authors()->attach($bookAuthorIds);
 */
-        Book::factory(10)->create();
+        Book::factory(30)->create();
 
-        Comment::factory(50)->create();
+        Comment::factory(20)->create();
         
         Author::factory(5)->create();
 
@@ -83,6 +85,13 @@ class DatabaseSeeder extends Seeder
             );
         });
 
+
+        $books = Book::all();
+        User::all()->each(function ($user) use ($books) { 
+            $user->favorites()->attach(
+                $books->random(rand(1, 5))->pluck('id')->toArray()
+            );
+        });
         
     }
 }
