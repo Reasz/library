@@ -22,6 +22,19 @@
                 </form>
             @endif
 
+            @if($book->checkRead())
+                <p>in reads</p>
+            @else
+                <form method="POST" action="read">
+                    @csrf
+                    <div class="row p-4">
+                        <input type="text" id="user_id" name="user_id" value="{{ auth()->user()->id }}" hidden >
+                        <input type="text" id="book_id" name="book_id" value="{{ $book->id }}" hidden >
+                        <x-form.submit-button> Add to reads </x-form.submit-button>
+                    </div>
+                </form>
+            @endif
+
             <div>   
                 <b>Authors:</b> 
                 @foreach($book->authors as $author)

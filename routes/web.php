@@ -38,6 +38,7 @@ use App\Http\Controllers\BookCommentsController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AdminBookController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ReadController;
 
 Route::get('/', function () {
 	return redirect('/dashboard'); })->middleware('auth');
@@ -59,6 +60,10 @@ Route::post('/books-{book:id}-comments', [BookCommentsController::class, 'store'
 Route::get('/favorites', [FavoriteController::class, 'show'])->middleware('auth')->name('favorites');
 Route::delete('/favorites-{favorite:id}', [FavoriteController::class, 'destroy'])->middleware('auth');
 Route::post('favorites', [FavoriteController::class, 'store'])->middleware('auth');
+
+Route::get('/read', [ReadController::class, 'show'])->middleware('auth');
+Route::delete('/read-{read:id}', [ReadController::class, 'destroy'])->middleware('auth');
+Route::post('read', [ReadController::class, 'store'])->middleware('auth');
 
 
 Route::get('admin-books', [AdminBookController::class, 'index'])->middleware('can:admin')->name('admin-books');

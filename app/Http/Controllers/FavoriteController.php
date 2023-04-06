@@ -10,7 +10,7 @@ class FavoriteController extends Controller
 {
     public function show()
     {   
-        return view('books.favorites',[
+        return view('books.booktable',[
             'favorites' => Favorite::where('user_id', auth()->user()->id)->with('book')->paginate(18)->withQueryString()
         ]);
     }

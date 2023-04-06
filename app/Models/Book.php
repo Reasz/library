@@ -56,9 +56,21 @@ class Book extends Model
         return $this->belongsToMany(User::class, 'user_id');
     }
 
+    public function read() {
+        return $this->belongsToMany(Read::class, 'read', 'user_id');
+    }
+
     public function checkFavorites()
     {
         if(Favorite::where(['book_id' => $this->id, 'user_id' => auth()->user()->id])->exists()){
+            return true;
+        }
+        return false;
+    }
+
+    public function checkRead()
+    {
+        if(Read::where(['book_id' => $this->id, 'user_id' => auth()->user()->id])->exists()){
             return true;
         }
         return false;

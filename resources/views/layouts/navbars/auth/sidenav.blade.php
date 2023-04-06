@@ -39,6 +39,15 @@
                     <span class="nav-link-text ms-1">Favorite books</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ str_contains(request()->url(), 'read') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'read']) }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-books text-warning text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Read list</span>
+                </a>
+            </li>
 
 
             @admin
