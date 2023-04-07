@@ -61,4 +61,8 @@ class User extends Authenticatable
     public function read() {
         return $this->belongsToMany(Book::class, 'read');
     }
+
+    public function rents() {
+        return $this->belongsToMany(Book::class, 'rented');
+    }
 }

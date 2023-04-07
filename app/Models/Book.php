@@ -53,11 +53,15 @@ class Book extends Model
     }
 
     public function favorites() {
-        return $this->belongsToMany(User::class, 'user_id');
+        return $this->belongsToMany(User::class, 'favorites');
     }
 
     public function read() {
-        return $this->belongsToMany(Read::class, 'read', 'user_id');
+        return $this->belongsToMany(User::class, 'reads');
+    }
+
+    public function rents() {
+        return $this->belongsToMany(User::class, 'rented');
     }
 
     public function checkFavorites()

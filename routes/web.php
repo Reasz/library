@@ -39,6 +39,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\AdminBookController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ReadController;
+use App\Http\Controllers\RentController;
 
 Route::get('/', function () {
 	return redirect('/dashboard'); })->middleware('auth');
@@ -64,6 +65,11 @@ Route::post('favorites', [FavoriteController::class, 'store'])->middleware('auth
 Route::get('/read', [ReadController::class, 'show'])->middleware('auth');
 Route::delete('/read-{read:id}', [ReadController::class, 'destroy'])->middleware('auth');
 Route::post('read', [ReadController::class, 'store'])->middleware('auth');
+
+Route::get('/rent-{book:id}', [RentController::class, 'show'])->middleware('can:admin')->name('rent');
+Route::post('/rent-{book:id}', [RentController::class, 'store'])->middleware('can:admin');
+Route::delete('/back-{rent:id}', [RentController::class, 'destroy'])->middleware('can:admin')->name('giveback');
+Route::get('/rent', [RentController::class, 'index'])->middleware('can:admin')->name('rented');
 
 
 Route::get('admin-books', [AdminBookController::class, 'index'])->middleware('can:admin')->name('admin-books');

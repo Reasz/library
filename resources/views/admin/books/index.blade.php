@@ -28,7 +28,12 @@
                                 @endforeach
                             </p>
                             </td>
-                                @superadmin
+                            <td class="align-middle">
+                                <a href="rent-{{ $book->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Rent book">
+                                    Rent
+                                </a>
+                            </td>
+                            @superadmin
                                 <td class="align-middle">
                                     <a href="admin-book-{{ $book->id }}-edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit book">
                                         Edit
