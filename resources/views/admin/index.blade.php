@@ -8,6 +8,17 @@
             <div class="table-responsive">
                 @if($rents->count() > 0 )
                     <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Authors</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">User ID</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Username</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Number of copies</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Return</th>
+                              <th class="text-secondary opacity-7"></th>
+                            </tr>
+                          </thead>
                         <tbody>
                             @foreach($rents as $rent)
                                 <tr>
@@ -37,6 +48,11 @@
                                     <td>
                                         <p class="text-xs font-weight-bold mb-0">
                                             {{ $rent->user->username }}
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p class="text-xs font-weight-bold mb-0">
+                                            {{ $rent->number_of_copies }}
                                         </p>
                                     </td>
                                     <td class="align-middle">

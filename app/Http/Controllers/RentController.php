@@ -44,6 +44,10 @@ class RentController extends Controller
 
     public function destroy(Rent $rent)
     {
+        $book = Book::where(['id' => $rent->book_id])->first();
+        $book->update([
+            'rented_copies' => $book->rented_copies - $rent->number_of_copies
+        ]);
         $rent->delete();
 
         return back()->with('success', 'Rented Book Deleted');
