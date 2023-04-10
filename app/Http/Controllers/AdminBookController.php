@@ -25,7 +25,9 @@ class AdminBookController extends Controller
             'placement' => 'required|string',
             'isbn' => 'required|integer',
             'number_of_copies' => 'required|integer',
-            //'genres' => 'required',
+            //'genres'    => 'required|array|min:1',
+            //'genres.*'  => 'required|string|distinct|min:1'
+            //'genres' => 'array',
             //'genres.*' => 'required'//['required', Rule::exists('genres', 'id')],
             //'author' => 'required'
         ]);
@@ -34,8 +36,9 @@ class AdminBookController extends Controller
 
         $book = Book::create($attributes);
         $book->genres()->attach(request()->input('genres'));
+        $book->authors()->attach(request()->input('authors'));
 
-        return redirect('/books');
+        return back()->with('success', 'Book Added');
     }
 
     public function edit(Book $book) {

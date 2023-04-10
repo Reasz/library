@@ -7,7 +7,7 @@
                 class="form-control"
                 id="{{ $name }}"
                 name="{{ $name }}" 
-                placeholder="{{ $name }}" required
+                placeholder="{{ $name }}"
                 {{ $attributes([ 'value' => old($name)]) }}>
 
         <x-form.error name="{{ $name }}" />

@@ -37,6 +37,7 @@ use App\Http\Controllers\BookCommentsController;
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AdminBookController;
+use App\Http\Controllers\AdminAuthorController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ReadController;
 use App\Http\Controllers\RentController;
@@ -75,6 +76,9 @@ Route::get('/rent', [RentController::class, 'index'])->middleware('can:admin')->
 Route::get('admin-books', [AdminBookController::class, 'index'])->middleware('can:admin')->name('admin-books');
 Route::post('admin-books', [AdminBookController::class, 'store'])->middleware('can:admin');
 Route::get('admin-book-create', [AdminBookController::class, 'create'])->middleware('can:admin')->name('admin-book-create');
+
+Route::get('admin-author-create', [AdminAuthorController::class, 'create'])->middleware('can:admin')->name('admin-author-create');
+Route::post('admin-authors', [AdminAuthorController::class, 'store'])->middleware('can:admin');
 
 Route::get('/admin-book-{book:id}-edit', [AdminBookController::class, 'edit'])->middleware('can:superadmin')->name('admin-book-edit');
 Route::patch('/admin-book-{book:id}', [AdminBookController::class, 'update'])->middleware('can:superadmin')->name('admin-book-edit');
