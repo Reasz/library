@@ -5,73 +5,104 @@
     <x-card>         
         <div class="container">
                            
-            <div>   
+            <p>   
                 {{ $book->title }}
+            </p>
+
+            <div class="table-responsive">
+                <table class="table align-items-center mb-0">
+                    <tbody>
+                        <tr>
+                            <td>
+                                @if($book->checkFavorites())
+                                    <form method="POST" action="favorites-{{ $favorite->id }}">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button class="btn">
+                                            <i class="ni ni-favourite-28"></i>
+                                        </button>
+                                    </form>
+                                @else
+                                    <form method="POST" action="favorites">
+                                        @csrf
+                                            <input type="text" id="user_id" name="user_id" value="{{ auth()->user()->id }}" hidden >
+                                            <input type="text" id="book_id" name="book_id" value="{{ $book->id }}" hidden >
+                                            <button class="btn btn-primary" type="submit"> <i class="ni ni-favourite-28"></i> </button>
+                                        
+                                    </form>
+                                @endif
+                            </td>
+                            <td>
+                                @if($book->checkRead())
+                                    <form method="POST" action="reads-{{ $read->id }}">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button class="btn">
+                                            <i class="ni ni-books"></i>
+                                        </button>
+                                    </form>
+                                @else
+                                    <form method="POST" action="reads">
+                                        @csrf
+                                            <input type="text" id="user_id" name="user_id" value="{{ auth()->user()->id }}" hidden >
+                                            <input type="text" id="book_id" name="book_id" value="{{ $book->id }}" hidden >
+                                            <button class="btn btn-primary" type="submit"> <i class="ni ni-books"></i> </button>
+                                        
+                                    </form>
+                                @endif
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            @if($book->checkFavorites())
-                <p>in favorites</p>
-            @else
-                <form method="POST" action="favorites">
-                    @csrf
-                    <div class="row p-4">
-                        <input type="text" id="user_id" name="user_id" value="{{ auth()->user()->id }}" hidden >
-                        <input type="text" id="book_id" name="book_id" value="{{ $book->id }}" hidden >
-                        <x-form.submit-button> Add to favorites </x-form.submit-button>
-                    </div>
-                </form>
-            @endif
-
-            @if($book->checkRead())
-                <p>in reads</p>
-            @else
-                <form method="POST" action="read">
-                    @csrf
-                    <div class="row p-4">
-                        <input type="text" id="user_id" name="user_id" value="{{ auth()->user()->id }}" hidden >
-                        <input type="text" id="book_id" name="book_id" value="{{ $book->id }}" hidden >
-                        <x-form.submit-button> Add to reads </x-form.submit-button>
-                    </div>
-                </form>
-            @endif
-
-            <div>   
+            <p>   
                 <b>Authors:</b> 
                 @foreach($book->authors as $author)
-                    {{ $author->name }}
+                    @if ($loop->last)
+                        {{ $author->name }}
+                        @break
+                    @endif
+                    {{ $author->name }},
                 @endforeach
-            </div>
+            </p>
 
-            <div>   
+            <p>   
                 <b>Genres:</b> 
                 @foreach($book->genres as $genre)
-                    {{ $genre->name }}
+                    @if ($loop->last)
+                        {{ $genre->name }}
+                        @break
+                    @endif
+                    {{ $genre->name }},
                 @endforeach
-            </div>
+            </p>
 
-            <div>   
-                <b>edition:</b> {{ $book->edition }}
-            </div>
+            <p>   
+                <b>Edition:</b> {{ $book->edition }}
+            </p>
 
-            <div>   
+            <p>   
                 {{ $book->summary }}
-            </div>
+            </p>
 
-            <div>   
-                <b>placement:</b>  {{ $book->placement }}
-            </div>
+            <p>   
+                <b>Placement:</b>  {{ $book->placement }}
+            </p>
 
-            <div>   
-                <b>isbn:</b>  {{ $book->isbn }}
-            </div>
+            <p>   
+                <b>ISBN:</b>  {{ $book->isbn }}
+            </p>
 
-            <div>   
-                <b>number of copies:</b>  {{ $book->number_of_copies }}
-            </div>
+            <p>   
+                <b>Number of copies:</b>  {{ $book->number_of_copies }}
+            </p>
 
-            <div>   
-                <b>rented copies:</b>  {{ $book->rented_copies }}
-            </div>
+            <p>   
+                <b>Rented copies:</b>  {{ $book->rented_copies }}
+            </p>
          
         </div>
         

@@ -10,6 +10,10 @@
 
             <div class="text-muted small">
                 @foreach ($book->authors as $author)
+                @if ($loop->last)
+                    <a href="?authors={{$author->id}}&{{ http_build_query(request()->except('authors', 'page')) }}">{{ $author->name }}</a>
+                    @break
+                @endif
                     <a href="?authors={{$author->id}}&{{ http_build_query(request()->except('authors', 'page')) }}">{{ $author->name }}</a>,
                 @endforeach
             </div>
