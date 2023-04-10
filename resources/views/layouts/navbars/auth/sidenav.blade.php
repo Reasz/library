@@ -13,15 +13,6 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}" href="{{ route('home') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Dashboard</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'books' ? 'active' : '' }}" href="{{ route('books') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -30,28 +21,50 @@
                     <span class="nav-link-text ms-1">Books</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'favorites') == true ? 'active' : '' }}" href="{{ route('favorites') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-favourite-28 text-warning text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Favorite books</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'reads') == true ? 'active' : '' }}" href="{{ route('reads') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-books text-warning text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Read list</span>
-                </a>
-            </li>
 
+            @guest
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::currentRouteName() == 'login' ? 'active' : '' }}" href="{{ route('login') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-book-bookmark text-warning text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Login</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::currentRouteName() == 'register' ? 'active' : '' }}" href="{{ route('register') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-book-bookmark text-warning text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Register</span>
+                    </a>
+                </li>
+            @endguest
+
+            @auth
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'favorites') == true ? 'active' : '' }}" href="{{ route('favorites') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-favourite-28 text-warning text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Favorite books</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ str_contains(request()->url(), 'reads') == true ? 'active' : '' }}" href="{{ route('reads') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-books text-warning text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Read list</span>
+                    </a>
+                </li>
+            @endauth
 
             @admin
-
                 <li>
                     <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
                         <i class="fab fa-laravel" ></i>
@@ -91,7 +104,6 @@
                         </ul>
                     </div>
                 </li>
-
             @endadmin
 
 

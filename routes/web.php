@@ -56,7 +56,7 @@ Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middle
 
 
 Route::get('/books', [BookController::class, 'books'])->name('books');
-Route::get('/books/{book:id}', [BookController::class, 'book'])->middleware('auth')->name('book');
+Route::get('/books/{book:id}', [BookController::class, 'book'])->name('book');
 Route::post('/books/{book:id}/comments', [BookCommentsController::class, 'store'])->name('book-comment');
 
 Route::get('/favorites', [FavoriteController::class, 'show'])->middleware('auth')->name('favorites');

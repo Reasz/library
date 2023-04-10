@@ -8,55 +8,56 @@
             <p>   
                 {{ $book->title }}
             </p>
+            @auth
+                <div class="table-responsive">
+                    <table class="table align-items-center mb-0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @if($book->checkFavorites())
+                                        <form method="POST" action="{{ route('remove-favorite', $favorite->id) }}">
+                                            @csrf
+                                            @method('DELETE')
 
-            <div class="table-responsive">
-                <table class="table align-items-center mb-0">
-                    <tbody>
-                        <tr>
-                            <td>
-                                @if($book->checkFavorites())
-                                    <form method="POST" action="{{ route('remove-favorite', $favorite->id) }}">
-                                        @csrf
-                                        @method('DELETE')
+                                            <button class="btn">
+                                                <i class="ni ni-favourite-28"></i>
+                                                <span class="btn-inner--text">remove from favorites</span>
+                                            </button>
+                                        </form>
+                                    @else
+                                        <form method="POST" action="{{ route('add-favorite') }}">
+                                            @csrf
+                                                <input type="text" id="user_id" name="user_id" value="{{ auth()->user()->id }}" hidden >
+                                                <input type="text" id="book_id" name="book_id" value="{{ $book->id }}" hidden >
+                                                <button class="btn btn-primary" type="submit"> <i class="ni ni-favourite-28"></i> <span class="btn-inner--text">add to favorites</span> </button>
+                                        </form>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($book->checkRead())
+                                        <form method="POST" action="{{ route('remove-read', $read->id) }}">
+                                            @csrf
+                                            @method('DELETE')
 
-                                        <button class="btn">
-                                            <i class="ni ni-favourite-28"></i>
-                                            <span class="btn-inner--text">remove from favorites</span>
-                                        </button>
-                                    </form>
-                                @else
-                                    <form method="POST" action="{{ route('add-favorite') }}">
-                                        @csrf
-                                            <input type="text" id="user_id" name="user_id" value="{{ auth()->user()->id }}" hidden >
-                                            <input type="text" id="book_id" name="book_id" value="{{ $book->id }}" hidden >
-                                            <button class="btn btn-primary" type="submit"> <i class="ni ni-favourite-28"></i> <span class="btn-inner--text">add to favorites</span> </button>
-                                    </form>
-                                @endif
-                            </td>
-                            <td>
-                                @if($book->checkRead())
-                                    <form method="POST" action="{{ route('remove-read', $read->id) }}">
-                                        @csrf
-                                        @method('DELETE')
-
-                                        <button class="btn">
-                                            <i class="ni ni-books"></i>
-                                            <span class="btn-inner--text">remove from read list</span>
-                                        </button>
-                                    </form>
-                                @else
-                                    <form method="POST" action="{{ route('add-read') }}">
-                                        @csrf
-                                            <input type="text" id="user_id" name="user_id" value="{{ auth()->user()->id }}" hidden >
-                                            <input type="text" id="book_id" name="book_id" value="{{ $book->id }}" hidden >
-                                            <button class="btn btn-primary" type="submit"> <i class="ni ni-books"></i> <span class="btn-inner--text">add to read list</span> </button>
-                                    </form>
-                                @endif
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                                            <button class="btn">
+                                                <i class="ni ni-books"></i>
+                                                <span class="btn-inner--text">remove from read list</span>
+                                            </button>
+                                        </form>
+                                    @else
+                                        <form method="POST" action="{{ route('add-read') }}">
+                                            @csrf
+                                                <input type="text" id="user_id" name="user_id" value="{{ auth()->user()->id }}" hidden >
+                                                <input type="text" id="book_id" name="book_id" value="{{ $book->id }}" hidden >
+                                                <button class="btn btn-primary" type="submit"> <i class="ni ni-books"></i> <span class="btn-inner--text">add to read list</span> </button>
+                                        </form>
+                                    @endif
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            @endauth
 
             <p>   
                 <b>Authors:</b> 

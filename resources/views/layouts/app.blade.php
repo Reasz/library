@@ -24,7 +24,12 @@
 <body class="{{ $class ?? '' }}">
 
     @guest
-        @yield('content')
+        <div class="min-height-300 bg-primary position-absolute w-100"></div>
+        @include('layouts.navbars.auth.sidenav')
+        <main class="main-content border-radius-lg">
+            @yield('content')
+        </main>
+        @include('components.fixed-plugin')
     @endguest
 
     @auth
