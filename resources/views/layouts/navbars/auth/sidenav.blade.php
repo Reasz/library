@@ -62,6 +62,17 @@
                         <span class="nav-link-text ms-1">Read list</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">
+                        @csrf
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                            class="nav-link text-white font-weight-bold px-0">
+                            <i class="fa fa-user me-sm-1"></i>
+                            <span class="nav-link-text ms-1" style="color:black;">Log out</span>
+                        </a>
+                    </form>
+                </li>
             @endauth
 
             @admin
