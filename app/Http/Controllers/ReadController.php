@@ -9,8 +9,8 @@ class ReadController extends Controller
 {
     public function show()
     {   
-        return view('books.booktable',[
-            'favorites' => Read::where('user_id', auth()->user()->id)->with('book')->paginate(18)->withQueryString()
+        return view('books.reads',[
+            'reads' => Read::where('user_id', auth()->user()->id)->with('book')->paginate(18)->withQueryString()
         ]);
     }
 
@@ -22,7 +22,7 @@ class ReadController extends Controller
 
         Read::create($attributes);
 
-        return redirect('/read');
+        return back()->with('success', 'Book added to read list');
     }
 
     public function destroy(Read $read)
