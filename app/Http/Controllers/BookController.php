@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Author;
 use App\Models\Book;
-use App\Models\BookAuthors;
-use App\Models\Genre;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use Symfony\Component\HttpFoundation\Response;
+use App\Models\Favorite;
+use App\Models\Read;
 
 class BookController extends Controller
 {
@@ -28,7 +24,9 @@ class BookController extends Controller
     public function book(Book $book)
     {
         return view('books.book', [
-            'book' => $book
+            'book' => $book,
+            'favorite' => Favorite::where(['user_id' => auth()->user()->id, 'book_id' => $book->id])->first(),
+            'read' => Read::where(['user_id' => auth()->user()->id, 'book_id' => $book->id])->first()
         ]);
     }
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
 use App\Models\Favorite;
 use Illuminate\Http\Request;
 
@@ -10,7 +9,7 @@ class FavoriteController extends Controller
 {
     public function show()
     {   
-        return view('books.booktable',[
+        return view('books.favorites',[
             'favorites' => Favorite::where('user_id', auth()->user()->id)->with('book')->paginate(18)->withQueryString()
         ]);
     }
@@ -23,7 +22,7 @@ class FavoriteController extends Controller
 
         Favorite::create($attributes);
 
-        return redirect('/favorites');
+        return back()->with('success', 'Book added to favorites');
     }
 
     public function destroy(Favorite $favorite)
