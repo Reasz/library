@@ -22,25 +22,25 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'books') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'books']) }}">
+                <a class="nav-link {{ str_contains(request()->url(), 'books') == true ? 'active' : '' }}" href="{{ route('books') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-books text-warning text-sm opacity-10"></i>
+                        <i class="ni ni-book-bookmark text-warning text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Books</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'favorites') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'favorites']) }}">
+                <a class="nav-link {{ str_contains(request()->url(), 'favorites') == true ? 'active' : '' }}" href="{{ route('favorites') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-books text-warning text-sm opacity-10"></i>
+                        <i class="ni ni-favourite-28 text-warning text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Favorite books</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'read') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'read']) }}">
+                <a class="nav-link {{ str_contains(request()->url(), 'reads') == true ? 'active' : '' }}" href="{{ route('reads') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-books text-warning text-sm opacity-10"></i>
@@ -62,28 +62,28 @@
                     <div class="collapse show" id="laravel-examples">
                         <ul class="nav pl-4">
                             <li class="nav-item">
-                                <a class="nav-link {{ str_contains(request()->url(), 'admin-book-create') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'admin-book-create']) }}">
+                                <a class="nav-link {{ str_contains(request()->url(), 'admin-book-create') == true ? 'active' : '' }}" href="{{ route('admin-book-create') }}">
                                     <div
                                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                        <i class="ni ni-books text-warning text-sm opacity-10"></i>
+                                        <i class="ni ni-tag text-warning text-sm opacity-10"></i>
                                     </div>
                                     <span class="nav-link-text ms-1">New book</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ str_contains(request()->url(), 'admin-books') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'admin-books']) }}">
+                                <a class="nav-link {{ str_contains(request()->url(), 'admin-books') == true ? 'active' : '' }}" href="{{ route('admin-books') }}">
                                     <div
                                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                        <i class="ni ni-books text-warning text-sm opacity-10"></i>
+                                        <i class="ni ni-archive-2 text-warning text-sm opacity-10"></i>
                                     </div>
                                     <span class="nav-link-text ms-1">All books</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ str_contains(request()->url(), 'rent') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'rent']) }}">
+                                <a class="nav-link {{ str_contains(request()->url(), 'rent') == true ? 'active' : '' }}" href="{{ route('rent') }}">
                                     <div
                                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                        <i class="ni ni-books text-warning text-sm opacity-10"></i>
+                                        <i class="ni ni-badge text-warning text-sm opacity-10"></i>
                                     </div>
                                     <span class="nav-link-text ms-1">Rented books</span>
                                 </a>
