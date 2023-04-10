@@ -39,7 +39,7 @@ class RentController extends Controller
             'rented_copies' => $book->rented_copies + $attributes['number_of_copies']
         ]);
         
-        return redirect('/admin-books');
+        return back()->with('success', 'Book succesfully rented');
     }
 
     public function destroy(Rent $rent)

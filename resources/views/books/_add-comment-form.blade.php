@@ -3,7 +3,7 @@
             <div class="row">
                 <div class="col-md-16 mt-4">
                     <div class="card p-4">
-                        <form method="POST" action="/books-{{ $book->id }}-comments">
+                        <form method="POST" action="{{ route('book-comment', $book->id) }}">
                             @csrf
 
                             <x-form.textarea name="comment" />

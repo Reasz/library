@@ -56,33 +56,33 @@ Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middle
 
 
 Route::get('/books', [BookController::class, 'books'])->name('books');
-Route::get('/books-{book:id}', [BookController::class, 'book'])->name('book');
-Route::post('/books-{book:id}-comments', [BookCommentsController::class, 'store']);
+Route::get('/books/{book:id}', [BookController::class, 'book'])->middleware('auth')->name('book');
+Route::post('/books/{book:id}/comments', [BookCommentsController::class, 'store'])->name('book-comment');
 
 Route::get('/favorites', [FavoriteController::class, 'show'])->middleware('auth')->name('favorites');
-Route::delete('/favorites-{favorite:id}', [FavoriteController::class, 'destroy'])->middleware('auth');
-Route::post('favorites', [FavoriteController::class, 'store'])->middleware('auth');
+Route::delete('/favorites/{favorite:id}', [FavoriteController::class, 'destroy'])->middleware('auth')->name('remove-favorite');
+Route::post('/favorites', [FavoriteController::class, 'store'])->middleware('auth')->name('add-favorite');
 
 Route::get('/reads', [ReadController::class, 'show'])->middleware('auth')->name('reads');
-Route::delete('/reads-{read:id}', [ReadController::class, 'destroy'])->middleware('auth');
-Route::post('reads', [ReadController::class, 'store'])->middleware('auth');
+Route::delete('/reads/{read:id}', [ReadController::class, 'destroy'])->middleware('auth')->name('remove-read');
+Route::post('reads', [ReadController::class, 'store'])->middleware('auth')->name('add-read');
 
-Route::get('/rent-{book:id}', [RentController::class, 'show'])->middleware('can:admin')->name('rent');
-Route::post('/rent-{book:id}', [RentController::class, 'store'])->middleware('can:admin');
-Route::delete('/back-{rent:id}', [RentController::class, 'destroy'])->middleware('can:admin')->name('giveback');
-Route::get('/rent', [RentController::class, 'index'])->middleware('can:admin')->name('rent');
+Route::get('/rent/{book:id}', [RentController::class, 'show'])->middleware('can:admin')->name('rent');
+Route::post('/rent/{book:id}', [RentController::class, 'store'])->middleware('can:admin')->name('rent-post');
+Route::delete('/back/{rent:id}', [RentController::class, 'destroy'])->middleware('can:admin')->name('rent-giveback');
+Route::get('/rent', [RentController::class, 'index'])->middleware('can:admin')->name('rents');
 
 
-Route::get('admin-books', [AdminBookController::class, 'index'])->middleware('can:admin')->name('admin-books');
-Route::post('admin-books', [AdminBookController::class, 'store'])->middleware('can:admin');
-Route::get('admin-book-create', [AdminBookController::class, 'create'])->middleware('can:admin')->name('admin-book-create');
+Route::get('admin/books', [AdminBookController::class, 'index'])->middleware('can:admin')->name('admin-books');
+Route::post('admin/books', [AdminBookController::class, 'store'])->middleware('can:admin')->name('admin-add-book');
+Route::get('admin/book/create', [AdminBookController::class, 'create'])->middleware('can:admin')->name('admin-book-create');
 
-Route::get('admin-author-create', [AdminAuthorController::class, 'create'])->middleware('can:admin')->name('admin-author-create');
-Route::post('admin-authors', [AdminAuthorController::class, 'store'])->middleware('can:admin');
+Route::get('admin/author/create', [AdminAuthorController::class, 'create'])->middleware('can:admin')->name('admin-author-create');
+Route::post('admin/authors', [AdminAuthorController::class, 'store'])->middleware('can:admin')->name('admin-add-author');
 
-Route::get('/admin-book-{book:id}-edit', [AdminBookController::class, 'edit'])->middleware('can:superadmin')->name('admin-book-edit');
-Route::patch('/admin-book-{book:id}', [AdminBookController::class, 'update'])->middleware('can:superadmin')->name('admin-book-edit');
-Route::delete('/admin-book-{book:id}', [AdminBookController::class, 'destroy'])->middleware('can:superadmin')->name('admin-book-delete');
+Route::get('/admin/book/{book:id}/edit', [AdminBookController::class, 'edit'])->middleware('can:superadmin')->name('admin-book-edit');
+Route::patch('/admin/book/{book:id}', [AdminBookController::class, 'update'])->middleware('can:superadmin')->name('admin-book-update');
+Route::delete('/admin/book/{book:id}', [AdminBookController::class, 'destroy'])->middleware('can:superadmin')->name('admin-book-delete');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');

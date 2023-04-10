@@ -5,7 +5,7 @@
         <div class="card" style="width: 25rem; margin: 1rem;">
 
             <span class="badge bg-gradient-warning">
-                <a href="/books-{{ $book->id }}">{{ $book->title }} </a>
+                <a href="{{ route('book', $book->id) }}">{{ $book->title }} </a>
             </span>
 
             <div class="text-muted small">

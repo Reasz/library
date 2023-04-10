@@ -14,13 +14,13 @@
             </div>
         @endif
 
-        <form method="POST" action="admin-authors">
+        <form method="POST" action="{{ route('admin-add-author') }}">
             @csrf
             <div class="row p-4">
                 <x-form.input name="name" />
                 <div class="row"> 
                     <x-form.submit-button> Add </x-form.submit-button>
-                    <a href="admin-book-create">new book</a>
+                    <a href="{{ route('admin-book-create') }}">new book</a>
                 </div>
             </div>
         </form>

@@ -14,7 +14,7 @@
                             <div class="d-flex px-2 py-1">
                                 <div class="d-flex flex-column justify-content-center">
                                 <h6 class="mb-0 text-xs">
-                                    <a href="books-{{ $favorite->book->id }}">
+                                    <a href="{{ route('book', $favorite->book->id) }}">
                                         {{ $favorite->book->title }}
                                     </a>
                                 </h6>
@@ -33,7 +33,7 @@
                             </p>
                             </td>
                             <td class="align-middle">
-                                <form method="POST" action="favorites-{{ $favorite->id }}">
+                                <form method="POST" action="{{ route('remove-favorite', $favorite->id) }}">
                                     @csrf
                                     @method('DELETE')
 

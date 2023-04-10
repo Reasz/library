@@ -14,14 +14,14 @@
             </div>
         @endif
 
-        <form method="POST" action="admin-books">
+        <form method="POST" action="{{ route('admin-add-book') }}">
             @csrf
             <div class="row p-4">
                 @php
                     $authors = \App\Models\Author::orderBy('name', 'asc')->get();
                 @endphp
                 <x-form.select-multiple name="authors" :elements="$authors" />
-                <a class="h6" href="admin-author-create">new author</a>
+                <a class="h6" href="{{ route('admin-author-create') }}">new author</a>
                 <x-form.input name="title" />
                 <x-form.input name="placement" />
                 <x-form.input name="isbn" type="number"/>

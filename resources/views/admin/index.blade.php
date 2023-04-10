@@ -15,7 +15,7 @@
                                     <div class="d-flex px-2 py-1">
                                         <div class="d-flex flex-column justify-content-center">
                                         <h6 class="mb-0 text-xs">
-                                            <a href="books-{{ $rent->book->id }}">
+                                            <a href="{{ route('book', $rent->book->id) }}">
                                                 {{ $rent->book->title }}
                                             </a>
                                         </h6>
@@ -40,7 +40,7 @@
                                         </p>
                                     </td>
                                     <td class="align-middle">
-                                        <form method="POST" action="/back-{{ $rent->id }}">
+                                        <form method="POST" action="{{ route('rent-giveback', $rent->id) }}">
                                             @csrf
                                             @method('DELETE')
     

@@ -17,7 +17,7 @@
 
         @if (($book->number_of_copies - $book->rented_copies) > 0)
             <p>Available copies: {{ $book->number_of_copies - $book->rented_copies }}</p>
-            <form method="POST" action="rent-{{ $book->id }}">
+            <form method="POST" action="{{ route('rent-post', $book->id) }}">
                 @csrf
                 <div class="row p-4">
                     <input class="form-control" type="text" id="user_id" name="user_id" >
