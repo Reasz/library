@@ -15,6 +15,7 @@ return new class extends Migration
             //$table->bigIncrements('read_id');
             //$table->unsignedBigInteger('book_id');
             //$table->unsignedBigInteger('user_id');
+            $table->id();
             $table->timestamp('edited_at');
             $table->foreignId('book_id');
             $table->foreignId('user_id');
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('read');
+        Schema::dropIfExists('reads');
     }
 };
