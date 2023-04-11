@@ -26,12 +26,14 @@ class AdminBookController extends Controller
             'edition' => 'required|integer',
             'placement' => 'required|string',
             'isbn' => 'required|integer',
-            'number_of_copies' => 'required|integer',
-            //'genres'    => 'required|array|min:1',
-            //'genres.*'  => 'required|string|distinct|min:1'
-            //'genres' => 'array',
-            //'genres.*' => 'required'//['required', Rule::exists('genres', 'id')],
-            //'author' => 'required'
+            'number_of_copies' => 'required|integer'
+        ]);
+
+        request()->validate([
+            'genres' => 'required|array|min:1',
+            'genres.*' => 'required|string|distinct|min:1',//['required', Rule::exists('genres', 'id')]
+            'authors' => 'required|array|min:1',
+            'authors.*' => 'required|string|distinct|min:1'//['required', Rule::exists('authors', 'id')]
         ]);
 
         $attributes['rented_copies'] = 0;
