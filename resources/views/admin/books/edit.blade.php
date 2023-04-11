@@ -4,7 +4,7 @@
     @include('layouts.navbars.auth.topnav', ['title' => ('Edit book ' . $book->title) ]) 
 
     <x-card> 
-        <form method="POST" action="admin-book-{{ $book->id}}">
+        <form method="POST" action="{{ route('admin-book-update', $book->id) }}">
             @csrf
             @method('PATCH')
 
@@ -19,7 +19,7 @@
                 @php
                     $genres = \App\Models\Genre::all();
                 @endphp
-                <x-form.select-multiple name="genres" :elements="$genres" />
+                <x-form.select-multiple name="genres" :elements="$genres" :values="$book->genres" />
 
                 <x-form.textarea name="summary" > {{ old('summary', $book->summary) }} </x-form.textarea>
 

@@ -20,7 +20,7 @@
                 @php
                     $authors = \App\Models\Author::orderBy('name', 'asc')->get();
                 @endphp
-                <x-form.select-multiple name="authors" :elements="$authors" />
+                <x-form.select-multiple name="authors" :elements="$authors"  />
                 <a class="h6" href="{{ route('admin-author-create') }}">new author</a>
                 <x-form.input name="title" />
                 <x-form.input name="placement" />
