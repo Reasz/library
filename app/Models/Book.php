@@ -16,6 +16,9 @@ class Book extends Model
             $query->where(fn($query) =>
                 $query->where('title', 'like', '%' . $search . '%')
                     ->orWhere('summary', 'like', '%' . $search . '%')
+                    ->orWhereHas('authors', fn ($query) => 
+                                    $query->where('name', 'like', '%' . $search . '%')
+                                )
             )
         );
 
@@ -30,14 +33,6 @@ class Book extends Model
                 $query->where('author_id', $authors)
             )
         );
-
-        /*
-        if($filters['search'] ?? false) {
-            $query
-                ->where('title', 'like', '%' . request('search') . '%')
-                ->orWhere('summary', 'like', '%' . request('search') . '%');
-        }
-        */
     }
 
     public function authors() {
