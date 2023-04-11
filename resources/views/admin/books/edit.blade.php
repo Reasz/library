@@ -4,13 +4,19 @@
     @include('layouts.navbars.auth.topnav', ['title' => ('Edit book ' . $book->title) ]) 
 
     <x-card> 
+        <x-succes-message />
+        
         <form method="POST" action="{{ route('admin-book-update', $book->id) }}">
             @csrf
             @method('PATCH')
 
             <div class="row p-4">
+                @php
+                    $authors = \App\Models\Author::all();
+                @endphp
+                <x-form.select-multiple name="authors" :elements="$authors" :values="$book->authors" />
+
                 <x-form.input name="title" value="{{ $book->title }}"/>
-                <x-form.input name="author" />
                 <x-form.input name="placement"  value="{{ $book->placement }}"/>
                 <x-form.input name="isbn" type="number" value="{{ $book->isbn }}"/>
                 <x-form.input name="edition" type="number" value="{{ $book->edition }}"/>
