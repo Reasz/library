@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('genres', function (Blueprint $table) {
-            //$table->bigIncrements('genre_id');
             $table->id();
             $table->string('name');
             $table->timestamp('edited_at');

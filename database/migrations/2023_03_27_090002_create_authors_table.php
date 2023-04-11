@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('authors', function (Blueprint $table) {
-            //$table->bigIncrements('author_id');
             $table->id();
             $table->string('name');
             $table->timestamp('edited_at');
