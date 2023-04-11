@@ -36,6 +36,10 @@
                                     <td>
                                     <p class="text-xs font-weight-bold mb-0">
                                         @foreach($rent->book->authors as $author)
+                                            @if ($loop->last)
+                                                {{ $author->name }}
+                                                @break
+                                            @endif
                                             {{ $author->name }}, 
                                         @endforeach
                                     </p>
