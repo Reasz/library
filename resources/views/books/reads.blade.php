@@ -33,7 +33,7 @@
                             </p>
                             </td>
                             <td class="align-middle">
-                                <form method="POST" action="reads-{{ $read->id }}">
+                                <form method="POST" action="{{ route('remove-read', $read->id) }}">
                                     @csrf
                                     @method('DELETE')
 
