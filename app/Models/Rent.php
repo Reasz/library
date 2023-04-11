@@ -13,6 +13,16 @@ class Rent extends Model
 
     protected $guarded = [];
 
+    public function scopeFilter($query, array $filters) {
+        $query->when($filters['search'] ?? false, fn ($query, $search) =>
+            $query->where(fn($query) =>
+                $query->WhereHas('book', fn ($query) => 
+                                    $query->where('title', 'like', '%' . $search . '%')
+                                )
+            )
+        );
+    }
+
     
     public function book() {
         return $this->belongsTo(Book::class, 'book_id');

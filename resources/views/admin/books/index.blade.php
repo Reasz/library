@@ -3,7 +3,11 @@
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'Books']) 
 
-    <x-card> 
+    <x-card>
+        <div style="display:flex; align-items:center; space-between:space-evenly;">
+            <x-books-search />
+        </div>
+
         <div class="card">
             <div class="table-responsive">
               <table class="table align-items-center mb-0">

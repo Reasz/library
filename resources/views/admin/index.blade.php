@@ -4,6 +4,10 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Books']) 
 
     <x-card> 
+        <div style="display:flex; align-items:center; space-between:space-evenly;">
+            <x-books-search />
+        </div>
+        
         <div class="card">
             <div class="table-responsive">
                 @if($rents->count() > 0 )
