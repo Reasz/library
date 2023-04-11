@@ -19,6 +19,7 @@ class RentController extends Controller
     {
         return view('admin.index', [
             'rents' => Rent::latest()
+                    ->with(['book', 'user'])
                     ->paginate(18)
                     ->withQueryString()
         ]);

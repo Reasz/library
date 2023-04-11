@@ -9,7 +9,7 @@ class AdminBookController extends Controller
 {
     public function index() {
         return view('admin.books.index', [
-            'books' => Book::paginate(18)
+            'books' => Book::with('authors')->paginate(18)
         ]);
     }
 

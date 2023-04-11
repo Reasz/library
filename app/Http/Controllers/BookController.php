@@ -13,7 +13,7 @@ class BookController extends Controller
         return view('books.books', [
             'books' => Book::latest()->filter(
                 request(['search', 'genres', 'authors'])
-            )->paginate(18)->withQueryString()
+            )->with(['authors', 'genres'])->paginate(18)->withQueryString()
         ]);
     }
 
