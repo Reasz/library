@@ -7,6 +7,8 @@
         
         <h5>{{ $book->title }}</h5>
 
+        <x-succes-message />
+
         <p>
             @foreach($book->authors as $author)
                 {{ $author->name }}, 
